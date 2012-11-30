@@ -1,0 +1,6 @@
+<li>
+  <%= link_to user.name, user %>
+  <% if !current_user?(user) %>
+      <%= link_to 'haha', '#' %>
+  <% end %>
+</li>

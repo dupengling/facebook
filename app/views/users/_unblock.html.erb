@@ -1,0 +1,5 @@
+<% friendship = current_user.friendship(@user) %>
+<%= form_for(friendship, url: unblock_friendship_path(friendship), html: {method: :delete}) do |f| %>
+    <div><%= f.hidden_field :friend_id %></div>
+    <%= f.submit "Unblock" %>
+<% end %>

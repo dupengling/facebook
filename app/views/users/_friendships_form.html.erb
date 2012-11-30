@@ -1,0 +1,22 @@
+<% unless current_user?(@user) %>
+    <div>
+      <% if current_user.is_friend?(@user) %>
+          <%= render 'delete_friend' %>
+          <%= render 'block' %>
+      <% elsif current_user.block?(@user) %>
+          <%= render 'unblock' %>
+      <% elsif current_user.is_blocked_by?(@user) %>
+          <h3>You are blocked by <%= @user.name %></h3>
+      <% elsif current_user.unconfirmed_request?(@user) %>
+          <%= render 'confirm_request' %>
+          <%= render 'block' %>
+      <% elsif current_user.send_request?(@user) %>
+          <h3>Waiting for <%= @user.name %> to confirm</h3>
+      <% elsif !current_user.send_request?(@user) %>
+          <%= render 'send_request' %>
+      <% else %>
+          <%= "Error" if Rails.env.development? %>
+      <% end %>
+      <%= debug(current_user.friendship(@user)) if Rails.env.development? %>
+    </div>
+<% end %>

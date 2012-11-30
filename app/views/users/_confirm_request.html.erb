@@ -1,0 +1,5 @@
+<% friendship = current_user.reverse_friendships.find_by_inviter_id(@user) %>
+<%= form_for(friendship, url: confirm_friendship_path(friendship)) do |f| %>
+    <div><%= f.hidden_field :inviter_id %></div>
+<%= f.submit "Confirm" %>
+<% end %>

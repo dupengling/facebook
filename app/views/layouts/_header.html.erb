@@ -1,0 +1,11 @@
+<header>
+  <div>
+    <% if signed_in? %>
+        <%= link_to "Users", users_path %>
+        <%= link_to "Sign out", signout_path, method: "delete" %>
+    <% else %>
+        <%= link_to "Sign in", signin_path %>
+        <%= link_to "Sign up", signup_path %>
+    <% end %>
+  </div>
+</header>

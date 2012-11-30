@@ -1,0 +1,4 @@
+<% friendship = current_user.friendship(@user) %>
+<%= form_for(friendship, url: block_friendship_path(friendship)) do |f| %>
+    <%= f.submit "Block" %>
+<% end %>
